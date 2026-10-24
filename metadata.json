@@ -1,0 +1,6 @@
+{
+  "name": "GateDiff - API Gateway Migration Testing CLI & Lab",
+  "description": "Production-minded open-source Java CLI and interactive testing lab for validating API gateway migrations between Kong, Gravitee, Apigee, and AWS API Gateway.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

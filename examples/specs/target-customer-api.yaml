@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Fictional Customer Service (Target - Gravitee)
+  version: 2.0.0
+  description: Target microservice exposed through Gravitee API Management
+paths:
+  /api/customers:
+    get:
+      summary: Retrieve all registered customers
+      operationId: listCustomers
+      responses:
+        '200':
+          description: List of active and pending customers
+    post:
+      summary: Register customer entity
+      operationId: createCustomer
+      responses:
+        '201':
+          description: Created
+  /api/customers/{id}:
+    get:
+      summary: Fetch single customer details
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer record
+        '404':
+          description: Record not found
+    delete:
+      summary: Remove customer by ID
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Removed

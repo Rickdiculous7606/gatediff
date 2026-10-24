@@ -1,0 +1,34 @@
+# Build outputs
+target/
+build/
+dist/
+coverage/
+dependency-reduced-pom.xml
+.playwright-cli/
+.aistudio/
+
+# Node
+node_modules/
+
+# Logs & Environment
+*.log
+.env*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IntelliJ IDEA & Eclipse
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+
+# GateDiff generated reports
+reports/
+gatediff-report.json
+gatediff-report.html

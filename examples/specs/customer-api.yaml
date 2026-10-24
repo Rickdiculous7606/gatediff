@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Fictional Customer Service (Source - Kong)
+  version: 1.0.0
+  description: Source microservice exposed through Kong API Gateway
+paths:
+  /api/customers:
+    get:
+      summary: List all customers
+      operationId: listCustomers
+      responses:
+        '200':
+          description: A list of customers
+    post:
+      summary: Create a new customer
+      operationId: createCustomer
+      responses:
+        '201':
+          description: Customer created
+  /api/customers/{id}:
+    get:
+      summary: Get customer by ID
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: C-101
+      responses:
+        '200':
+          description: Customer details
+        '404':
+          description: Customer not found
+    delete:
+      summary: Delete customer by ID
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Customer deleted

@@ -1,0 +1,14 @@
+version: 1
+
+services:
+  - id: customer-api
+    name: Customer Management API
+    sourceSpec: examples/specs/customer-api.yaml
+    targetSpec: examples/specs/target-customer-api.yaml
+    sourceBaseUrl: "http://localhost:8081"
+    targetBaseUrl: "http://localhost:8082"
+
+  - id: orders-api
+    name: Order Fulfillment API
+    sourceBaseUrl: "http://localhost:8081/orders"
+    targetBaseUrl: "http://localhost:8082/orders"

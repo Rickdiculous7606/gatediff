@@ -1,0 +1,55 @@
+# GateDiff API Gateway Migration Validation Suite
+# Version 1 Schema Specification
+version: 1
+
+project:
+  name: fictional-customer-migration
+  description: Migration verification from Kong Gateway (8081) to Gravitee APIM (8082)
+  environment: local
+
+defaults:
+  timeoutMs: 5000
+  retries: 1
+  compare:
+    status: true
+    jsonBody: true
+    additionalFields: true
+    ignoredJsonPaths:
+      - "$.requestId"
+      - "$.meta.timestamp"
+    headers:
+      - "content-type"
+
+services:
+  - id: customer-api
+    name: Fictional Customer Service
+    sourceBaseUrl: "http://localhost:8081"
+    targetBaseUrl: "http://localhost:8082"
+    openApiSpec: "examples/specs/customer-api.yaml"
+    tests:
+      - id: get-customer-c101
+        name: "Retrieve Active Customer C-101"
+        method: GET
+        path: "/api/customers/C-101"
+        expectedStatus: 200
+
+      - id: list-all-customers
+        name: "List All Customers"
+        method: GET
+        path: "/api/customers"
+        expectedStatus: 200
+
+      - id: create-customer
+        name: "Create Customer Record"
+        method: POST
+        path: "/api/customers"
+        body: '{"name":"Acme Logistics","tier":"STANDARD"}'
+        headers:
+          Content-Type: application/json
+        expectedStatus: 201
+
+      - id: delete-customer
+        name: "Delete Customer Record"
+        method: DELETE
+        path: "/api/customers/C-101"
+        expectedStatus: 204

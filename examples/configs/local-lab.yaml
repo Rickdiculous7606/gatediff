@@ -1,0 +1,21 @@
+# Local Fictional Migration Lab Configuration
+version: 1
+
+project:
+  name: fictional-local-lab
+  description: Offline testing lab with mock Kong and Gravitee gateways
+  environment: local-mock
+
+lab:
+  sourcePort: 8081
+  targetPort: 8082
+  defaultScenario: MATCHING
+  availableScenarios:
+    - MATCHING
+    - VALUE_MISMATCH
+    - STATUS_MISMATCH
+    - MISSING_FIELD
+    - ADDITIONAL_FIELD
+    - SERVER_ERROR
+    - HEADER_MISMATCH
+    - LATENCY_SPIKE
